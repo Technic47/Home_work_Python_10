@@ -1,0 +1,362 @@
+[
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "654132"
+    },
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "324"
+    },
+    {
+        "name": "Andrey",
+        "age": "55",
+        "phone": "3654"
+    },
+    {
+        "name": "Svetlana",
+        "age": "50",
+        "phone": "987654"
+    },
+    {
+        "name": "Nike",
+        "age": "15",
+        "phone": "3455"
+    },
+    {
+        "name": "Nika",
+        "age": "25",
+        "phone": "324765"
+    },
+    {
+        "name": "Ivan",
+        "age": "32",
+        "phone": "6547"
+    },
+    {
+        "name": "Katya",
+        "age": "25",
+        "phone": "3543"
+    },
+    {
+        "name": "Marta",
+        "age": "50",
+        "phone": "3466"
+    },
+    {
+        "name": "Petr",
+        "age": "30",
+        "phone": "6354"
+    },
+    {
+        "name": "Konstantin",
+        "age": "45",
+        "phone": "666"
+    },
+    {
+        "name": "Pavel",
+        "age": "44",
+        "phone": "34"
+    },
+    {
+        "name": "Konstantin",
+        "age": "34",
+        "phone": "34"
+    },
+    {
+        "name": "Margo",
+        "age": "54",
+        "phone": ""
+    },
+    {
+        "name": "Ilya",
+        "age": "15",
+        "phone": "354321"
+    },
+    {
+        "name": "Margo",
+        "age": "25",
+        "phone": "35489"
+    },
+    {
+        "name": "Petr",
+        "age": "32",
+        "phone": "35"
+    },
+    {
+        "name": "Anrey",
+        "age": "55",
+        "phone": "12345"
+    },
+    {
+        "name": "Svetlana",
+        "age": "32",
+        "phone": "67890"
+    },
+    {
+        "name": "Petr",
+        "age": "47",
+        "phone": "324354"
+    },
+    {
+        "name": "Alexa",
+        "age": "45",
+        "phone": "6574"
+    },
+    {
+        "name": "Artur",
+        "age": "21",
+        "phone": "3243"
+    },
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "654132"
+    },
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "324"
+    },
+    {
+        "name": "Andrey",
+        "age": "55",
+        "phone": "3654"
+    },
+    {
+        "name": "Svetlana",
+        "age": "50",
+        "phone": "987654"
+    },
+    {
+        "name": "Nike",
+        "age": "15",
+        "phone": "3455"
+    },
+    {
+        "name": "Nika",
+        "age": "25",
+        "phone": "324765"
+    },
+    {
+        "name": "Ivan",
+        "age": "32",
+        "phone": "6547"
+    },
+    {
+        "name": "Katya",
+        "age": "25",
+        "phone": "3543"
+    },
+    {
+        "name": "Marta",
+        "age": "50",
+        "phone": "3466"
+    },
+    {
+        "name": "Petr",
+        "age": "30",
+        "phone": "6354"
+    },
+    {
+        "name": "Konstantin",
+        "age": "45",
+        "phone": "666"
+    },
+    {
+        "name": "Pavel",
+        "age": "44",
+        "phone": "34"
+    },
+    {
+        "name": "Konstantin",
+        "age": "34",
+        "phone": "34"
+    },
+    {
+        "name": "Margo",
+        "age": "54",
+        "phone": ""
+    },
+    {
+        "name": "Ilya",
+        "age": "15",
+        "phone": "354321"
+    },
+    {
+        "name": "Margo",
+        "age": "25",
+        "phone": "35489"
+    },
+    {
+        "name": "Petr",
+        "age": "32",
+        "phone": "35"
+    },
+    {
+        "name": "Anrey",
+        "age": "55",
+        "phone": "12345"
+    },
+    {
+        "name": "Svetlana",
+        "age": "32",
+        "phone": "67890"
+    },
+    {
+        "name": "Petr",
+        "age": "47",
+        "phone": "324354"
+    },
+    {
+        "name": "Alexa",
+        "age": "45",
+        "phone": "6574"
+    },
+    {
+        "name": "Artur",
+        "age": "21",
+        "phone": "3243"
+    },
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "123"
+    },
+    {
+        "name": "Marina",
+        "age": "32",
+        "phone": "4321"
+    },
+    {
+        "name": "Andrey",
+        "age": "55",
+        "phone": "9876"
+    },
+    {
+        "name": "Svetlana",
+        "age": "42",
+        "phone": "666777"
+    },
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "654132"
+    },
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "324"
+    },
+    {
+        "name": "Andrey",
+        "age": "55",
+        "phone": "3654"
+    },
+    {
+        "name": "Svetlana",
+        "age": "50",
+        "phone": "987654"
+    },
+    {
+        "name": "Nike",
+        "age": "15",
+        "phone": "3455"
+    },
+    {
+        "name": "Nika",
+        "age": "25",
+        "phone": "324765"
+    },
+    {
+        "name": "Ivan",
+        "age": "32",
+        "phone": "6547"
+    },
+    {
+        "name": "Katya",
+        "age": "25",
+        "phone": "3543"
+    },
+    {
+        "name": "Marta",
+        "age": "50",
+        "phone": "3466"
+    },
+    {
+        "name": "Petr",
+        "age": "30",
+        "phone": "6354"
+    },
+    {
+        "name": "Konstantin",
+        "age": "45",
+        "phone": "666"
+    },
+    {
+        "name": "Pavel",
+        "age": "44",
+        "phone": "34"
+    },
+    {
+        "name": "Konstantin",
+        "age": "34",
+        "phone": "34"
+    },
+    {
+        "name": "Margo",
+        "age": "54",
+        "phone": ""
+    },
+    {
+        "name": "Ilya",
+        "age": "15",
+        "phone": "354321"
+    },
+    {
+        "name": "Margo",
+        "age": "25",
+        "phone": "35489"
+    },
+    {
+        "name": "Petr",
+        "age": "32",
+        "phone": "35"
+    },
+    {
+        "name": "Anrey",
+        "age": "55",
+        "phone": "12345"
+    },
+    {
+        "name": "Svetlana",
+        "age": "32",
+        "phone": "67890"
+    },
+    {
+        "name": "Petr",
+        "age": "47",
+        "phone": "324354"
+    },
+    {
+        "name": "Alexa",
+        "age": "45",
+        "phone": "6574"
+    },
+    {
+        "name": "Artur",
+        "age": "21",
+        "phone": "3243"
+    },
+    {
+        "name": "Leonid",
+        "age": "32",
+        "phone": "747474"
+    },
+    {
+        "name": "Maxim",
+        "age": "62",
+        "phone": "88"
+    }
+]

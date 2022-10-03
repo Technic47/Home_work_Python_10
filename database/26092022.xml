@@ -1,0 +1,42 @@
+<data>
+<row>
+    <name>text1</name>
+    <age>text2</age>
+    <phone>text3</phone>
+</row>
+<row>
+    <name>Pavel</name>
+    <age>32</age>
+    <phone>89991654432</phone>
+</row>
+<row>
+    <name>Andrey</name>
+    <age>54</age>
+    <phone>9161234567</phone>
+</row>
+<row>
+    <name>Maxim</name>
+    <age>37</age>
+    <phone>9991237654</phone>
+</row>
+<row>
+    <name>text1</name>
+    <age>text2</age>
+    <phone>text3</phone>
+</row>
+<row>
+    <name>Pavel</name>
+    <age>32</age>
+    <phone>89991654432</phone>
+</row>
+<row>
+    <name>Andrey</name>
+    <age>54</age>
+    <phone>9161234567</phone>
+</row>
+<row>
+    <name>Maxim</name>
+    <age>37</age>
+    <phone>9991237654</phone>
+</row>
+</data>

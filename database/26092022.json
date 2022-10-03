@@ -1,0 +1,42 @@
+[
+    {
+        "name": "text1",
+        "age": "text2",
+        "phone": "text3"
+    },
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "89991654432"
+    },
+    {
+        "name": "Andrey",
+        "age": "54",
+        "phone": "9161234567"
+    },
+    {
+        "name": "Maxim",
+        "age": "37",
+        "phone": "9991237654"
+    },
+    {
+        "name": "text1",
+        "age": "text2",
+        "phone": "text3"
+    },
+    {
+        "name": "Pavel",
+        "age": "32",
+        "phone": "89991654432"
+    },
+    {
+        "name": "Andrey",
+        "age": "54",
+        "phone": "9161234567"
+    },
+    {
+        "name": "Maxim",
+        "age": "37",
+        "phone": "9991237654"
+    }
+]
