@@ -136,7 +136,7 @@ async def export_xml(message: types.Message):
 
 
 @dp.message_handler(commands=['search'])
-async def import_json(message: types.Message):
+async def search(message: types.Message):
     data = message.text.replace(' ', ',').replace(';', ',').replace('.', ',').split(',')
     db.search(data[1:])
     requested_data = db.show_indexed()
@@ -145,6 +145,15 @@ async def import_json(message: types.Message):
     for item in range(len(results)):
         await bot.send_message(message.from_user.id, f'{indexes[item]}: {results[item]}')
     await bot.send_message(message.from_user.id, 'For deleting these lines use "/del indexes" command.')
+
+
+@dp.message_handler(commands=['del'])
+async def delete(message: types.Message):
+    data = message.text.replace(' ', ',').replace(';', ',').replace('.', ',').split(',')
+    list1 = list(map(int, data[1:]))
+    print(list1)
+    db.delete(list1)
+    await bot.send_message(message.from_user.id, f'Lines with indexes {data[1:]} were deleted.')
 
 
 @dp.message_handler()
