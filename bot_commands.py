@@ -1,20 +1,22 @@
 import csv
 from keyboards import kb_client
 from aiogram import Bot, types
-from aiogram.types import ReplyKeyboardRemove
+
 from aiogram.dispatcher import Dispatcher
 from aiogram.dispatcher import FSMContext
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from classes import *
 import aiogram.utils.markdown as md
 from aiogram.types import ParseMode
 import config
 import os
-import logger
+
 import database as db
 
 bot = Bot(config.TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
+dp.middleware.setup(LoggingMiddleware())
 
 new = Database()
 add = AddInfo()
