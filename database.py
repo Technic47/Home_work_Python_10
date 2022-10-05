@@ -1,6 +1,6 @@
-import csv
 import datetime
 import json
+import csv
 
 
 def create_new() -> str:
@@ -9,7 +9,6 @@ def create_new() -> str:
     now = now.strftime("%d%m%Y")
     name = f'/{now}.csv'
     path = data_path + name
-    # set_cols(path)
     with open(setup, 'w') as file:
         file.write(path)
     return path
