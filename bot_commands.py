@@ -1,10 +1,11 @@
 import csv
-
+from keyboards import kb_client
 from aiogram import Bot, types
+from aiogram.types import ReplyKeyboardRemove
 from aiogram.dispatcher import Dispatcher
 from aiogram.dispatcher import FSMContext
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.dispatcher.filters.state import State, StatesGroup
+from classes import *
 import aiogram.utils.markdown as md
 from aiogram.types import ParseMode
 import config
@@ -15,17 +16,16 @@ import database as db
 bot = Bot(config.TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
-
-class Database(StatesGroup):
-    name = State()
-    col1 = State()
-    col2 = State()
-    col3 = State()
+new = Database()
+add = AddInfo()
+del_line = DelInfo()
+search = SearchInfo()
+merge = Merge()
 
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    await bot.send_message(message.from_user.id, 'Hello! Let`s start!')
+    await bot.send_message(message.from_user.id, 'Hello! Let`s start!', reply_markup=kb_client)
 
 
 @dp.message_handler(commands=['help'])
@@ -37,47 +37,90 @@ async def help(message: types.Message):
 
 
 @dp.message_handler(commands=['new'])
-async def new(message: types.Message):
+async def new_db(message: types.Message):
     database1 = db.create_new()
     await bot.send_message(message.from_user.id, f'New database created: {database1}')
     await bot.send_message(message.from_user.id, f'First col name:')
-    await Database.col1.set()
+    await new.state1.set()
 
 
-@dp.message_handler(state=Database.col1)
+@dp.message_handler(state=new.state1)
 async def col1_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['col1'] = message.text
-    await Database.next()
+        data['state1'] = message.text
+    await new.next()
     await message.reply('Second col name:')
-    await Database.col2.set()
+    await new.state2.set()
 
 
-@dp.message_handler(state=Database.col2)
+@dp.message_handler(state=new.state2)
 async def col2_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['col2'] = message.text
-    await Database.next()
+        data['state2'] = message.text
+    await new.next()
     await message.reply('Third col name:')
-    await Database.col3.set()
+    await new.state3.set()
 
 
-@dp.message_handler(state=Database.col3)
+@dp.message_handler(state=new.state3)
 async def col3_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['col3'] = message.text
-        print(Database.col1)
+        data['state3'] = message.text
         await bot.send_message(
             message.from_user.id,
             md.text(
-                md.text(f'Col1:', data['col1']),
-                md.text(f'Col2:', data['col2']),
-                md.text(f'Col3:', data['col3']),
+                md.text(f'Col1:', data['state1']),
+                md.text(f'Col2:', data['state2']),
+                md.text(f'Col3:', data['state3']),
                 sep='\n',
             ),
             parse_mode=ParseMode.MARKDOWN)
-    cols = [data['col1'], data['col2'], data['col3']]
+    cols = [data['state1'], data['state2'], data['state3']]
     db.set_cols(cols)
+    await state.finish()
+
+
+@dp.message_handler(commands=['add'])
+async def add_line(message: types.Message):
+    await bot.send_message(message.from_user.id, f'First col info:')
+    await add.state1.set()
+
+
+@dp.message_handler(state=add.state1)
+async def col1_name(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['state1'] = message.text
+    await add.next()
+    await message.reply('Second col info:')
+    await add.state2.set()
+
+
+@dp.message_handler(state=add.state2)
+async def col2_name(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['state2'] = message.text
+    await add.next()
+    await message.reply('Third col info:')
+    await add.state3.set()
+
+
+@dp.message_handler(state=add.state3)
+async def col3_name(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['state3'] = message.text
+        await bot.send_message(
+            message.from_user.id,
+            md.text(
+                md.text(f'Col1:', data['state1']),
+                md.text(f'Col2:', data['state2']),
+                md.text(f'Col3:', data['state3']),
+                sep='\n',
+            ),
+            parse_mode=ParseMode.MARKDOWN)
+    cols = [data['state1'], data['state2'], data['state3']]
+    db.save_data(cols)
+    print(cols)
+    await state.finish()
 
 
 @dp.message_handler(commands=['show_dir'])
@@ -90,14 +133,6 @@ async def show_dir(message: types.Message):
 @dp.message_handler(commands=['show_current'])
 async def show_current(message: types.Message):
     await bot.send_message(message.from_user.id, db.show_current())
-
-
-@dp.message_handler(commands=['add'])
-async def add(message: types.Message):
-    data = message.text.replace(' ', ',').replace(';', ',').replace('.', ',').split(',')
-    db.save_data(data[1:])
-    data_text = ' '.join(data[1:])
-    await bot.send_message(message.from_user.id, f'Line added: {data_text}')
 
 
 @dp.message_handler(commands=['show_base'])
@@ -117,10 +152,19 @@ async def select(message: types.Message):
 
 
 @dp.message_handler(commands=['merge'])
-async def merge(message: types.Message):
-    data = message.text.replace(' ', ',').replace(';', ',').replace('.', ',').split(',')
-    db.merge(data[1])
-    await bot.send_message(message.from_user.id, f'Database {data[1]}.db was merged with current')
+async def merge_db(message: types.Message):
+    await bot.send_message(message.from_user.id, f'DB for adding to current:')
+    await merge.state1.set()
+
+
+@dp.message_handler(state=merge.state1)
+async def del_request(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        text = message.text
+        data['state1'] = text
+        await bot.send_message(message.from_user.id, f'Database {text}.db was merged with current')
+    db.merge(data['state1'])
+    await state.finish()
 
 
 @dp.message_handler(commands=['export_json'])
@@ -136,29 +180,56 @@ async def export_xml(message: types.Message):
 
 
 @dp.message_handler(commands=['search'])
-async def search(message: types.Message):
-    data = message.text.replace(' ', ',').replace(';', ',').replace('.', ',').split(',')
-    db.search(data[1:])
+async def search_line(message: types.Message):
+    await bot.send_message(message.from_user.id, f'Column name for search:')
+    await search.state1.set()
+
+
+@dp.message_handler(state=search.state1)
+async def col1_name(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['state1'] = message.text
+    await search.next()
+    await message.reply('Info:')
+    await search.state2.set()
+
+
+@dp.message_handler(state=search.state2)
+async def col2_name(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['state2'] = message.text
+    db.search(data['state1'], data['state2'])
     requested_data = db.show_indexed()
     indexes = requested_data[0]
     results = requested_data[1]
     for item in range(len(results)):
         await bot.send_message(message.from_user.id, f'{indexes[item]}: {results[item]}')
     await bot.send_message(message.from_user.id, 'For deleting these lines use "/del indexes" command.')
+    await state.finish()
 
 
 @dp.message_handler(commands=['del'])
 async def delete(message: types.Message):
-    data = message.text.replace(' ', ',').replace(';', ',').replace('.', ',').split(',')
-    list1 = list(map(int, data[1:]))
-    print(list1)
-    db.delete(list1)
-    await bot.send_message(message.from_user.id, f'Lines with indexes {data[1:]} were deleted.')
+    await bot.send_message(message.from_user.id, f'Indexes to delete:')
+    await del_line.state1.set()
+
+
+@dp.message_handler(state=del_line.state1)
+async def del_request(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        numbers = message.text.replace(' ', ',').replace(';', ',').replace('.', ',').split(',')
+        list1 = list(map(int, numbers))
+        data['state1'] = list1
+        await bot.send_message(message.from_user.id, f'Lines with indexes {list1} were deleted.')
+    indexes = data['state1']
+    print(indexes)
+    db.delete(indexes)
+    await state.finish()
 
 
 @dp.message_handler()
 async def echo_send(message: types.Message):
-    await message.answer(message.from_user.id, message.text)
+    await message.answer(message.text)
     # await message.answer(message.text)  # просто ответ
     # await message.reply(message.text)  # ответ с цитированием собщения пользователя
     # await bot.send_message(message.from_user.id, message.text) #ответ в личку

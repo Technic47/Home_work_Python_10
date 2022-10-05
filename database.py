@@ -24,7 +24,6 @@ def set_cols(cols) -> None:
     set names of cols in db from path
     :param path: db path
     """
-    print("Enter your cols via space:")
     data = dict.fromkeys(cols)
     print(data)
     path = show_current()
@@ -84,67 +83,20 @@ def select_base(name: str) -> None:
         set_current(data)
 
 
-def search(data):
+def search(col, data):
     """Search function in current db"""
     global indexes
     j = 0
     cols = get_cols()
-    key = data[0]
+    key = col
     for i in range(len(cols)):
         if key == cols[i]:
-            request = data[1]
+            request = data
             csvfile = csv.reader(open(show_current(), 'r'), delimiter=",")
             for row in csvfile:
                 j += 1
                 if request in row[i]:
                     indexes.append(j)
-
-
-
-
-def del_choose() -> None:
-    """support function. Allow to del positions after search"""
-    print('Would you like to delete your request from db?')
-    print('Y/N')
-    answer = UI.get_data()
-    if answer == 'Y' or answer == "y":
-        print('All of them?')
-        print('Y/N')
-        answer2 = UI.get_data()
-        if answer2 == 'Y' or answer2 == "y":
-            delete(indexes)
-        else:
-            print('What positions would you like to delete?')
-            show_indexed(indexes)
-            numbers = list(map(int, UI.get_data().replace(' ', ',').replace(';', ',')
-                               .replace('.', ',').split(',')))
-            delete(numbers)
-        print('Positions were deleted!')
-
-
-def custom_delete():
-    """user guide for removal choice"""
-    print('Do you know positions for removal?')
-    print('Y/N')
-    answer = UI.get_data()
-    if answer == 'Y' or answer == "y":
-        print('What positions would you like to delete?')
-        show_indexed(indexes)
-        numbers = list(map(int, UI.get_data().replace(' ', ',').replace(';', ',')
-                           .replace('.', ',').split(',')))
-        show_indexed(numbers)
-        print('Delete these positions?')
-        print('Y/N')
-        answer = UI.get_data()
-        if answer == 'Y' or answer == "y":
-            delete(numbers)
-            print('Positions deleted.')
-            return numbers
-    elif answer == 'N' or answer == "n":
-        print('Use "search" tool. It will help you to find positions.')
-        return 'Nothing'
-    else:
-        return 'Nothing'
 
 
 def show_indexed():
