@@ -21,6 +21,7 @@ add = AddInfo()
 del_line = DelInfo()
 search = SearchInfo()
 merge = Merge()
+select = Select()
 
 
 @dp.message_handler(commands=['start'])
@@ -145,10 +146,20 @@ async def show_base(message: types.Message):
 
 
 @dp.message_handler(commands=['select'])
-async def select(message: types.Message):
-    data = message.text.replace(' ', ',').replace(';', ',').replace('.', ',').split(',')
-    db.select_base(data[1])
-    await bot.send_message(message.from_user.id, f'Database {data[1]}.db selected and set as current')
+async def select_db(message: types.Message):
+    await show_dir(message)
+    await bot.send_message(message.from_user.id, f'What DB would you like to chose?')
+    await select.state1.set()
+
+
+@dp.message_handler(state=select.state1)
+async def del_request(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        text = message.text
+        data['state1'] = text
+        await bot.send_message(message.from_user.id, f'Database {text}.db selected and set as current')
+    db.select_base(data['state1'])
+    await state.finish()
 
 
 @dp.message_handler(commands=['merge'])

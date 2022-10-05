@@ -1,10 +1,6 @@
-from typing import List, Any
-from xml.etree import ElementTree
-import pandas
 import csv
 import datetime
 import json
-import UI
 
 
 def create_new() -> str:
@@ -186,4 +182,3 @@ def export_xml() -> None:
 setup = 'setup.txt'
 data_path = r'database'
 indexes = []
-setup = 'setup.txt'

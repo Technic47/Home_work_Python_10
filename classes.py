@@ -24,3 +24,7 @@ class Merge(StatesGroup):
 
 class DelInfo(StatesGroup):
     state1 = State()
+
+
+class Select(StatesGroup):
+    state1 = State()
